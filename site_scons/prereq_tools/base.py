@@ -52,7 +52,8 @@ class DownloadFailure(Exception):
 
     def __str__(self):
         """Exception string"""
-        return f'Failed to get {self.component} from {self.repo}'
+        return 'Failed to get {} from {}'.format(self.component, self.repo)
+
 
 
 class BadScript(Exception):
