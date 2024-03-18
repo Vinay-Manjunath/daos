@@ -55,7 +55,6 @@ class DownloadFailure(Exception):
         return 'Failed to get {} from {}'.format(self.component, self.repo)
 
 
-
 class BadScript(Exception):
     """Exception raised when a preload script has errors
 
@@ -71,7 +70,7 @@ class BadScript(Exception):
 
     def __str__(self):
         """Exception string"""
-        return f'Failed to execute {self.script}:\n{self.script} {self.trace}\n\nTraceback'
+        return 'Failed to execute {}:\n{} {}\n\nTraceback'.format(self.script, self.script, self.trace)
 
 
 class MissingDefinition(Exception):
@@ -87,7 +86,7 @@ class MissingDefinition(Exception):
 
     def __str__(self):
         """Exception string"""
-        return f'No definition for {self.component}'
+        return 'No definition for {}'.format(self.component)
 
 
 class BuildFailure(Exception):
@@ -103,7 +102,7 @@ class BuildFailure(Exception):
 
     def __str__(self):
         """Exception string"""
-        return f'{self.component} failed to build'
+        return '{} failed to build'.format(self.component)
 
 
 class MissingTargets(Exception):
@@ -121,8 +120,8 @@ class MissingTargets(Exception):
     def __str__(self):
         """Exception string"""
         if self.package is None:
-            return f'{self.component} has missing targets after build.  See config.log for details'
-        return f'Package {self.package} is required. Check config.log'
+            return '{} has missing targets after build.  See config.log for details'.format(self.component)
+        return 'Package {} is required. Check config.log'.format(self.package)
 
 
 class MissingSystemLibs(Exception):
@@ -138,7 +137,7 @@ class MissingSystemLibs(Exception):
 
     def __str__(self):
         """Exception string"""
-        return f'{self.component} has unmet dependencies required for build'
+        return '{} has unmet dependencies required for build'.format(self.component)
 
 
 class DownloadRequired(Exception):
@@ -154,7 +153,7 @@ class DownloadRequired(Exception):
 
     def __str__(self):
         """Exception string"""
-        return f'{self.component} needs to be built, use --build-deps=yes'
+        return '{} needs to be built, use --build-deps=yes'.format(self.component)
 
 
 class BuildRequired(Exception):
@@ -170,7 +169,8 @@ class BuildRequired(Exception):
 
     def __str__(self):
         """Exception string"""
-        return f'{self.component} needs to be built, use --build-deps=yes'
+        return '{} needs to be built, use --build-deps=yes'.format(self.component)
+
 
 
 class Runner():
